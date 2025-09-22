@@ -82,7 +82,7 @@
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(25, 170);
+            lblPrecio.Location = new Point(25, 203);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(40, 15);
             lblPrecio.TabIndex = 4;
@@ -92,9 +92,9 @@
             // 
             mtbNumero.Enabled = false;
             mtbNumero.Location = new Point(97, 104);
-            mtbNumero.Mask = "9999999";
+            mtbNumero.Mask = "9999999999999999999";
             mtbNumero.Name = "mtbNumero";
-            mtbNumero.Size = new Size(100, 23);
+            mtbNumero.Size = new Size(196, 23);
             mtbNumero.TabIndex = 6;
             mtbNumero.ValidatingType = typeof(int);
             mtbNumero.MaskInputRejected += mtbNumero_MaskInputRejected;
@@ -105,18 +105,19 @@
             txtDescripcion.Enabled = false;
             txtDescripcion.Location = new Point(97, 139);
             txtDescripcion.MaxLength = 50;
+            txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(100, 23);
+            txtDescripcion.Size = new Size(196, 48);
             txtDescripcion.TabIndex = 7;
             txtDescripcion.TextChanged += txtDescripcion_TextChanged;
             // 
             // mtbPrecio
             // 
             mtbPrecio.Enabled = false;
-            mtbPrecio.Location = new Point(97, 170);
-            mtbPrecio.Mask = "9999999";
+            mtbPrecio.Location = new Point(97, 203);
+            mtbPrecio.Mask = "999999999999999999";
             mtbPrecio.Name = "mtbPrecio";
-            mtbPrecio.Size = new Size(100, 23);
+            mtbPrecio.Size = new Size(196, 23);
             mtbPrecio.TabIndex = 8;
             mtbPrecio.ValidatingType = typeof(int);
             mtbPrecio.TextChanged += mtbPrecio_TextChanged;
@@ -128,7 +129,7 @@
             cmbMarca.Items.AddRange(new object[] { "Peugeot", "Fiat", "Renault" });
             cmbMarca.Location = new Point(97, 34);
             cmbMarca.Name = "cmbMarca";
-            cmbMarca.Size = new Size(121, 23);
+            cmbMarca.Size = new Size(196, 23);
             cmbMarca.TabIndex = 9;
             cmbMarca.SelectedIndexChanged += cmbMarca_SelectedIndexChanged;
             // 
@@ -137,14 +138,14 @@
             lblDatosRepuesto.BorderStyle = BorderStyle.Fixed3D;
             lblDatosRepuesto.Location = new Point(12, 9);
             lblDatosRepuesto.Name = "lblDatosRepuesto";
-            lblDatosRepuesto.Size = new Size(227, 253);
+            lblDatosRepuesto.Size = new Size(299, 259);
             lblDatosRepuesto.TabIndex = 10;
             lblDatosRepuesto.Text = "Datos del repuesto";
             // 
             // btnIngresar
             // 
             btnIngresar.Enabled = false;
-            btnIngresar.Location = new Point(143, 221);
+            btnIngresar.Location = new Point(218, 232);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(75, 23);
             btnIngresar.TabIndex = 11;
@@ -154,7 +155,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(62, 221);
+            btnCancelar.Location = new Point(137, 232);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 12;
@@ -170,7 +171,7 @@
             cmbOrigen.Items.AddRange(new object[] { "(N) Nacional", "(I) Importado" });
             cmbOrigen.Location = new Point(97, 71);
             cmbOrigen.Name = "cmbOrigen";
-            cmbOrigen.Size = new Size(121, 23);
+            cmbOrigen.Size = new Size(196, 23);
             cmbOrigen.TabIndex = 13;
             cmbOrigen.SelectedIndexChanged += cmbOrigen_SelectedIndexChanged;
             // 

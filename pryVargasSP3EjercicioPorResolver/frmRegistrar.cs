@@ -16,7 +16,11 @@ namespace pryVargasSP3EjercicioPorResolver
         float Precio = 0;
 
         //Declaración array
-        string[] vecRepuestos = new string[100];
+        string[] vecMarca = new string[100];
+        string[] vecOrigen = new string[100];
+        int[] vecNumero = new int [100];
+        string[] vecDescripcion = new string[100];
+        float[] vecPrecio = new float[100];
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -84,7 +88,7 @@ namespace pryVargasSP3EjercicioPorResolver
         private void LimpiarControles()
         {
             cmbMarca.SelectedIndex = -1;
-            cmbOrigen.Text = "";
+            cmbOrigen.SelectedIndex = -1;
             mtbNumero.Text = "";
             txtDescripcion.Text = "";
             mtbPrecio.Text = "";
