@@ -75,7 +75,8 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            txtResultado.Text = ""; //Limpiamos la txt para no acumular
+            Resultado = ""; //Limpiamos la variable para no acumular
+            
             //otorgamos valor a la variable MarcaSeleccionada
             MarcaSeleccionada = cmbMarca.Text;
 
