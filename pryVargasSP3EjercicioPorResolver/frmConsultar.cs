@@ -22,6 +22,7 @@ namespace pryVargasSP3EjercicioPorResolver
         int Indice = 0;
         string MarcaSeleccionada = "";
         string OrigenSeleccionado = "";
+
         //se utilizara para acumular los valores y mostrarlos
         string Resultado = "";
 
@@ -31,7 +32,9 @@ namespace pryVargasSP3EjercicioPorResolver
             //Limpio controles
             cmbMarca.SelectedIndex = -1;
             chkImportado.Checked = false;
+            chkImportado.Enabled = false;
             chkNacional.Checked = false;
+            chkNacional.Enabled = false;
             cmbMarca.Focus();
         }
 
@@ -53,7 +56,6 @@ namespace pryVargasSP3EjercicioPorResolver
             }
             else
             {
-                //OrigenSeleccionado = "(I) Importado"; //Otorgamos valor a la variable OrigenSeleccionado
                 btnConsultar.Enabled = false;
             }
         }
@@ -73,6 +75,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+            txtResultado.Text = ""; //Limpiamos la txt para no acumular
             //otorgamos valor a la variable MarcaSeleccionada
             MarcaSeleccionada = cmbMarca.Text;
 
@@ -98,8 +101,13 @@ namespace pryVargasSP3EjercicioPorResolver
             //Limpio controles
             cmbMarca.SelectedIndex = -1;
             chkImportado.Checked = false;
+            chkImportado.Enabled = false;
             chkNacional.Checked = false;
+            chkNacional.Enabled = false;
+            Indice = 0;
             cmbMarca.Focus();
         }
+
+        
     }
 }
