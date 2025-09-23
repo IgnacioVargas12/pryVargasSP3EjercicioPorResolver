@@ -28,20 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblDatosRepuesto = new Label();
             lblMarca = new Label();
             lblOrigen = new Label();
             lblNumero = new Label();
             lblDescripcion = new Label();
             lblPrecio = new Label();
             mtbNumero = new MaskedTextBox();
-            txtDescripcion = new TextBox();
+            cmbOrigen = new ComboBox();
             mtbPrecio = new MaskedTextBox();
             cmbMarca = new ComboBox();
-            lblDatosRepuesto = new Label();
             btnIngresar = new Button();
             btnCancelar = new Button();
-            cmbOrigen = new ComboBox();
+            txtDescripcion = new TextBox();
+            btnConsultar = new Button();
             SuspendLayout();
+            // 
+            // lblDatosRepuesto
+            // 
+            lblDatosRepuesto.BorderStyle = BorderStyle.Fixed3D;
+            lblDatosRepuesto.Location = new Point(12, 9);
+            lblDatosRepuesto.Name = "lblDatosRepuesto";
+            lblDatosRepuesto.Size = new Size(299, 268);
+            lblDatosRepuesto.TabIndex = 10;
+            lblDatosRepuesto.Text = "Datos del repuesto";
             // 
             // lblMarca
             // 
@@ -100,16 +110,17 @@
             mtbNumero.MaskInputRejected += mtbNumero_MaskInputRejected;
             mtbNumero.TextChanged += mtbNumero_TextChanged;
             // 
-            // txtDescripcion
+            // cmbOrigen
             // 
-            txtDescripcion.Enabled = false;
-            txtDescripcion.Location = new Point(97, 139);
-            txtDescripcion.MaxLength = 50;
-            txtDescripcion.Multiline = true;
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(196, 48);
-            txtDescripcion.TabIndex = 7;
-            txtDescripcion.TextChanged += txtDescripcion_TextChanged;
+            cmbOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOrigen.Enabled = false;
+            cmbOrigen.FormattingEnabled = true;
+            cmbOrigen.Items.AddRange(new object[] { "(N) Nacional", "(I) Importado" });
+            cmbOrigen.Location = new Point(97, 71);
+            cmbOrigen.Name = "cmbOrigen";
+            cmbOrigen.Size = new Size(196, 23);
+            cmbOrigen.TabIndex = 13;
+            cmbOrigen.SelectedIndexChanged += cmbOrigen_SelectedIndexChanged;
             // 
             // mtbPrecio
             // 
@@ -126,26 +137,17 @@
             // 
             cmbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMarca.FormattingEnabled = true;
-            cmbMarca.Items.AddRange(new object[] { "Peugeot", "Fiat", "Renault" });
+            cmbMarca.Items.AddRange(new object[] { "(P)Peugeot", "(F) Fiat", "(R) Renault" });
             cmbMarca.Location = new Point(97, 34);
             cmbMarca.Name = "cmbMarca";
             cmbMarca.Size = new Size(196, 23);
             cmbMarca.TabIndex = 9;
             cmbMarca.SelectedIndexChanged += cmbMarca_SelectedIndexChanged;
             // 
-            // lblDatosRepuesto
-            // 
-            lblDatosRepuesto.BorderStyle = BorderStyle.Fixed3D;
-            lblDatosRepuesto.Location = new Point(12, 9);
-            lblDatosRepuesto.Name = "lblDatosRepuesto";
-            lblDatosRepuesto.Size = new Size(299, 259);
-            lblDatosRepuesto.TabIndex = 10;
-            lblDatosRepuesto.Text = "Datos del repuesto";
-            // 
             // btnIngresar
             // 
             btnIngresar.Enabled = false;
-            btnIngresar.Location = new Point(218, 232);
+            btnIngresar.Location = new Point(218, 243);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(75, 23);
             btnIngresar.TabIndex = 11;
@@ -155,7 +157,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(137, 232);
+            btnCancelar.Location = new Point(137, 243);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 12;
@@ -163,23 +165,33 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // cmbOrigen
+            // txtDescripcion
             // 
-            cmbOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbOrigen.Enabled = false;
-            cmbOrigen.FormattingEnabled = true;
-            cmbOrigen.Items.AddRange(new object[] { "(N) Nacional", "(I) Importado" });
-            cmbOrigen.Location = new Point(97, 71);
-            cmbOrigen.Name = "cmbOrigen";
-            cmbOrigen.Size = new Size(196, 23);
-            cmbOrigen.TabIndex = 13;
-            cmbOrigen.SelectedIndexChanged += cmbOrigen_SelectedIndexChanged;
+            txtDescripcion.Enabled = false;
+            txtDescripcion.Location = new Point(97, 139);
+            txtDescripcion.MaxLength = 50;
+            txtDescripcion.Multiline = true;
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(196, 48);
+            txtDescripcion.TabIndex = 7;
+            txtDescripcion.TextChanged += txtDescripcion_TextChanged;
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.Location = new Point(56, 243);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.TabIndex = 14;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // frmRegistrar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(323, 287);
+            Controls.Add(btnConsultar);
             Controls.Add(cmbOrigen);
             Controls.Add(btnCancelar);
             Controls.Add(btnIngresar);
@@ -202,19 +214,19 @@
         }
 
         #endregion
-
+        private Label lblDatosRepuesto;
         private Label lblMarca;
         private Label lblOrigen;
         private Label lblNumero;
         private Label lblDescripcion;
         private Label lblPrecio;
         private MaskedTextBox mtbNumero;
-        private TextBox txtDescripcion;
+        private ComboBox cmbOrigen;
         private MaskedTextBox mtbPrecio;
         private ComboBox cmbMarca;
-        private Label lblDatosRepuesto;
         private Button btnIngresar;
         private Button btnCancelar;
-        private ComboBox cmbOrigen;
+        private TextBox txtDescripcion;
+        private Button btnConsultar;
     }
 }

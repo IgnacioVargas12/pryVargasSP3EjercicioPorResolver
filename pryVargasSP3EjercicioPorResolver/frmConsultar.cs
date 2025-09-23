@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
+
+namespace pryVargasSP3EjercicioPorResolver
+{
+    public partial class frmConsultar : Form
+    {
+        public frmConsultar()
+        {
+            InitializeComponent();
+        }
+
+        //Declaración variables
+        int Indice = 0;
+        string MarcaSeleccionada = "";
+        string OrigenSeleccionado = "";
+        //se utilizara para acumular los valores y mostrarlos
+        string Resultado = "";
+
+        //Declaración arrays
+
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cmbMarca.SelectedIndex = -1;
+            chkImportado.Checked = false;
+            chkNacional.Checked = false;
+        }
+
+        private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMarca.SelectedIndex >= 0)
+            {
+                chkNacional.Enabled = true;
+                chkImportado.Enabled = true;
+            }
+        }
+
+        private void chkNacional_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNacional.Checked == true)
+            {
+                OrigenSeleccionado = "Nacional"; //Otorgamos valor a la variable OrigenSeleccionado
+                btnConsultar.Enabled = true;
+            }
+            else
+            {
+                OrigenSeleccionado = "Importado"; //Otorgamos valor a la variable OrigenSeleccionado
+                btnConsultar.Enabled = false;
+            }
+        }
+
+        private void chkImportado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkImportado.Checked == true)
+            {
+                btnConsultar.Enabled = true;
+            }
+            else
+            {
+                btnConsultar.Enabled = false;
+            }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            //otorgamos valor a la variable MarcaSeleccionada
+            MarcaSeleccionada = cmbMarca.Text;
+
+            while (Indice < frmRegistrar.indice) //Recorremos el vector hasta donde se esté lleno
+            {
+                //Verificamos que coincidan tanto marca como origen
+                if (frmRegistrar.vecMarca[Indice] == MarcaSeleccionada && frmRegistrar.vecOrigen[Indice] == OrigenSeleccionado)
+                {
+                    Resultado += "Número: " + frmRegistrar.vecNumero[Indice] + Environment.NewLine;
+                    Resultado += "Descripción: " + frmRegistrar.vecDescripcion[Indice] + Environment.NewLine;
+                    Resultado += "Precio: $" + frmRegistrar.vecPrecio[Indice] + Environment.NewLine;
+                    Resultado += "---------------------------" + Environment.NewLine;
+                }
+                Indice++;
+            }
+            if (Resultado == "")
+            {
+                Resultado = "No se encontraron repuestos con estos criterios.";
+            }
+
+            txtResultado.Text = Resultado;
+        }
+    }
+}

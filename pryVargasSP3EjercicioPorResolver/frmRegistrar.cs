@@ -8,7 +8,7 @@ namespace pryVargasSP3EjercicioPorResolver
         }
 
         //Declaración variables
-        int indice = 0;
+        public static int indice = 0;
         string Marca = "";
         string Origen = "";
         int Numero = 0;
@@ -16,19 +16,66 @@ namespace pryVargasSP3EjercicioPorResolver
         float Precio = 0;
 
         //Declaración array
-        string[] vecMarca = new string[100];
-        string[] vecOrigen = new string[100];
-        int[] vecNumero = new int [100];
-        string[] vecDescripcion = new string[100];
-        float[] vecPrecio = new float[100];
+        //Lo declaramos public static para poder usarlos en el otro formulario
+        public static string[] vecMarca = new string[100];
+        public static string[] vecOrigen = new string[100];
+        public static int[] vecNumero = new int[100];
+        public static string[] vecDescripcion = new string[100];
+        public static float[] vecPrecio = new float[100];
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            //Otorgamos valor a las variables
+            Marca = cmbMarca.Text;
+            Origen = cmbOrigen.Text;
+            Numero = Convert.ToInt32(mtbNumero.Text.Trim()); //.Trim borra los espacios que hay
+            Descripcion = txtDescripcion.Text;
+            Precio = Convert.ToInt32(mtbPrecio.Text.Trim()); //.Trim borra los espacio que hay
 
+            //Grabamos datos en los array
+
+            //Validamos que el array no este lleno
+            if (indice >= vecNumero.Length)
+            {
+                MessageBox.Show("El array se encuentra lleno, no se puede grabar más datos.","Array lleno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnIngresar.Enabled = false; //Deshabilitamos el btnIngresar para no agregar ningún dato nuevo
+                return; //detiene el el procedimiento para que no grabe ningún dato
+            }
+
+            //Validar que no haya un número repetido en el array
+            int i = 0;
+            bool existe = false;
+
+            while (i < indice && existe == false)   // recorre solo hasta la cantidad cargada y existe sea falso
+            {
+                if (vecNumero[i] == Numero)
+                {
+                    existe = true;
+                }
+                i++;
+            }
+
+            if (existe == true) //Validamos si sale del while por repetir número o no 
+            {
+                MessageBox.Show("Ya existe un repuesto con ese número.", "Número repetido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                //Grabamos los datos
+                vecMarca[indice] = Marca;
+                vecOrigen[indice] = Origen;
+                vecNumero[indice] = Numero;
+                vecDescripcion[indice] = Descripcion;
+                vecPrecio[indice] = Precio;
+
+                indice++;
+            }
+            LimpiarControles();
         }
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Validamos para habilitar cmbOrigen
             if (cmbMarca.SelectedIndex >= 0)
             {
                 cmbOrigen.Enabled = true;
@@ -46,6 +93,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void mtbNumero_TextChanged(object sender, EventArgs e)
         {
+            //Validamos para habilitar txtDescripción
             if (mtbNumero.Text != "")
             {
                 txtDescripcion.Enabled = true;
@@ -58,6 +106,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
+            //Validamos para habilitar el mtbPrecio
             if (txtDescripcion.Text != "")
             {
                 mtbPrecio.Enabled = true;
@@ -70,6 +119,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void mtbPrecio_TextChanged(object sender, EventArgs e)
         {
+            //Validamos para habilitar el btnIngresar
             if (mtbPrecio.Text != "")
             {
                 btnIngresar.Enabled = true;
@@ -87,6 +137,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void LimpiarControles()
         {
+            //Limpiamos los controles
             cmbMarca.SelectedIndex = -1;
             cmbOrigen.SelectedIndex = -1;
             mtbNumero.Text = "";
@@ -96,6 +147,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
         private void cmbOrigen_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Validamos para habilitar el mtbNumero
             if (cmbOrigen.SelectedIndex >= 0)
             {
                 mtbNumero.Enabled = true;
@@ -104,6 +156,14 @@ namespace pryVargasSP3EjercicioPorResolver
             {
                 mtbNumero.Enabled = false;
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            //Abrimos un nuevo formulario para consultar
+            frmConsultar ventanaConsultar = new frmConsultar();
+
+            ventanaConsultar.ShowDialog();
         }
     }
 }
