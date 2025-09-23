@@ -37,7 +37,7 @@ namespace pryVargasSP3EjercicioPorResolver
             //Validamos que el array no este lleno
             if (indice >= vecNumero.Length)
             {
-                MessageBox.Show("El array se encuentra lleno, no se puede grabar más datos.","Array lleno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El array se encuentra lleno, no se puede grabar más datos.", "Array lleno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnIngresar.Enabled = false; //Deshabilitamos el btnIngresar para no agregar ningún dato nuevo
                 return; //detiene el el procedimiento para que no grabe ningún dato
             }
@@ -143,6 +143,7 @@ namespace pryVargasSP3EjercicioPorResolver
             mtbNumero.Text = "";
             txtDescripcion.Text = "";
             mtbPrecio.Text = "";
+            cmbMarca.Focus();
         }
 
         private void cmbOrigen_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,6 +165,15 @@ namespace pryVargasSP3EjercicioPorResolver
             frmConsultar ventanaConsultar = new frmConsultar();
 
             ventanaConsultar.ShowDialog();
+        }
+
+        private void frmRegistrar_Load(object sender, EventArgs e)
+        {
+            //Cargamos items en el cmbMarca
+            cmbMarca.Items.Add("(P) Peugeot");
+            cmbMarca.Items.Add("(F) Fiat");
+            cmbMarca.Items.Add("(R) Renault");
+
         }
     }
 }

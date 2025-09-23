@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrar));
             lblDatosRepuesto = new Label();
             lblMarca = new Label();
             lblOrigen = new Label();
@@ -137,7 +138,6 @@
             // 
             cmbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMarca.FormattingEnabled = true;
-            cmbMarca.Items.AddRange(new object[] { "(P)Peugeot", "(F) Fiat", "(R) Renault" });
             cmbMarca.Location = new Point(97, 34);
             cmbMarca.Name = "cmbMarca";
             cmbMarca.Size = new Size(196, 23);
@@ -206,9 +206,11 @@
             Controls.Add(lblMarca);
             Controls.Add(lblDatosRepuesto);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmRegistrar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registar";
+            Load += frmRegistrar_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -25,14 +25,14 @@ namespace pryVargasSP3EjercicioPorResolver
         //se utilizara para acumular los valores y mostrarlos
         string Resultado = "";
 
-        //Declaración arrays
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            //Limpio controles
             cmbMarca.SelectedIndex = -1;
             chkImportado.Checked = false;
             chkNacional.Checked = false;
+            cmbMarca.Focus();
         }
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,12 +48,12 @@ namespace pryVargasSP3EjercicioPorResolver
         {
             if (chkNacional.Checked == true)
             {
-                OrigenSeleccionado = "Nacional"; //Otorgamos valor a la variable OrigenSeleccionado
+                OrigenSeleccionado = "(N) Nacional"; //Otorgamos valor a la variable OrigenSeleccionado
                 btnConsultar.Enabled = true;
             }
             else
             {
-                OrigenSeleccionado = "Importado"; //Otorgamos valor a la variable OrigenSeleccionado
+                //OrigenSeleccionado = "(I) Importado"; //Otorgamos valor a la variable OrigenSeleccionado
                 btnConsultar.Enabled = false;
             }
         }
@@ -63,6 +63,7 @@ namespace pryVargasSP3EjercicioPorResolver
             if (chkImportado.Checked == true)
             {
                 btnConsultar.Enabled = true;
+                OrigenSeleccionado = "(I) Importado";
             }
             else
             {
@@ -91,8 +92,14 @@ namespace pryVargasSP3EjercicioPorResolver
             {
                 Resultado = "No se encontraron repuestos con estos criterios.";
             }
-
+            //Muestro los resultados de la bùsqueda
             txtResultado.Text = Resultado;
+
+            //Limpio controles
+            cmbMarca.SelectedIndex = -1;
+            chkImportado.Checked = false;
+            chkNacional.Checked = false;
+            cmbMarca.Focus();
         }
     }
 }

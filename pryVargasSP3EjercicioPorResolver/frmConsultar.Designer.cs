@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultar));
             lblDatos = new Label();
             lblMarca = new Label();
             lblOrigen = new Label();
@@ -70,7 +71,7 @@
             // 
             cmbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMarca.FormattingEnabled = true;
-            cmbMarca.Items.AddRange(new object[] { "(P)Peugeot", "(F) Fiat", "(R) Renault" });
+            cmbMarca.Items.AddRange(new object[] { "(P) Peugeot", "(F) Fiat", "(R) Renault" });
             cmbMarca.Location = new Point(84, 35);
             cmbMarca.Name = "cmbMarca";
             cmbMarca.Size = new Size(182, 23);
@@ -146,6 +147,7 @@
             Controls.Add(lblMarca);
             Controls.Add(lblDatos);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmConsultar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consultar";
