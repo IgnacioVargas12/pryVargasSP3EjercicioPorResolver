@@ -46,7 +46,7 @@ namespace pryVargasSP3EjercicioPorResolver
             int i = 0;
             bool existe = false;
 
-            while (i < indice && existe == false)   // recorre solo hasta la cantidad cargada y existe sea falso
+            while (i < indice && existe == false)   // recorre solo hasta la cantidad cargada y mientras existe sea falso
             {
                 if (vecNumero[i] == Numero)
                 {

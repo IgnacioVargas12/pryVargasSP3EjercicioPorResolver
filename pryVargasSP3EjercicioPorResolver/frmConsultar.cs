@@ -89,9 +89,11 @@ namespace pryVargasSP3EjercicioPorResolver
                     Resultado += "Descripción: " + frmRegistrar.vecDescripcion[Indice] + Environment.NewLine;
                     Resultado += "Precio: $" + frmRegistrar.vecPrecio[Indice] + Environment.NewLine;
                     Resultado += "---------------------------" + Environment.NewLine;
+
                 }
                 Indice++;
             }
+
             if (Resultado == "")
             {
                 Resultado = "No se encontraron repuestos con estos criterios.";
