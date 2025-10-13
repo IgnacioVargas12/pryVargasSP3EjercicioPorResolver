@@ -15,13 +15,19 @@ namespace pryVargasSP3EjercicioPorResolver
         string Descripcion = "";
         float Precio = 0;
 
-        //Declaración array
-        //Lo declaramos public static para poder usarlos en el otro formulario
-        public static string[] vecMarca = new string[100];
-        public static string[] vecOrigen = new string[100];
-        public static int[] vecNumero = new int[100];
-        public static string[] vecDescripcion = new string[100];
-        public static float[] vecPrecio = new float[100];
+        //Declaración Struct
+        public struct datoRepuesto
+        {
+            public string marca;
+            public string origen;
+            public int numero;
+            public string descripcion;
+            public float precio;
+        }
+
+        //Declaración array principal
+        public static datoRepuesto[] vecRepuesto = new datoRepuesto[100];
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -35,7 +41,7 @@ namespace pryVargasSP3EjercicioPorResolver
             //Grabamos datos en los array
 
             //Validamos que el array no este lleno
-            if (indice >= vecNumero.Length)
+            if (indice >= vecRepuesto.Length)
             {
                 MessageBox.Show("El array se encuentra lleno, no se puede grabar más datos.", "Array lleno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnIngresar.Enabled = false; //Deshabilitamos el btnIngresar para no agregar ningún dato nuevo
@@ -48,7 +54,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
             while (i < indice && existe == false)   // recorre solo hasta la cantidad cargada y mientras existe sea falso
             {
-                if (vecNumero[i] == Numero)
+                if (vecRepuesto[i].numero == Numero)
                 {
                     existe = true;
                 }
@@ -62,11 +68,11 @@ namespace pryVargasSP3EjercicioPorResolver
             else
             {
                 //Grabamos los datos
-                vecMarca[indice] = Marca;
-                vecOrigen[indice] = Origen;
-                vecNumero[indice] = Numero;
-                vecDescripcion[indice] = Descripcion;
-                vecPrecio[indice] = Precio;
+                vecRepuesto[indice].marca = Marca;
+                vecRepuesto[indice].origen = Origen;
+                vecRepuesto[indice].numero = Numero;
+                vecRepuesto[indice].descripcion = Descripcion;
+                vecRepuesto[indice].precio = Precio;
 
                 indice++;
             }
