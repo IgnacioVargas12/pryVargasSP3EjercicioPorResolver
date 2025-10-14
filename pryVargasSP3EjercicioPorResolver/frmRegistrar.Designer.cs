@@ -129,7 +129,7 @@
             mtbPrecio.Location = new Point(97, 203);
             mtbPrecio.Mask = "999999999999999999";
             mtbPrecio.Name = "mtbPrecio";
-            mtbPrecio.Size = new Size(196, 23);
+            mtbPrecio.Size = new Size(115, 23);
             mtbPrecio.TabIndex = 8;
             mtbPrecio.ValidatingType = typeof(int);
             mtbPrecio.TextChanged += mtbPrecio_TextChanged;
