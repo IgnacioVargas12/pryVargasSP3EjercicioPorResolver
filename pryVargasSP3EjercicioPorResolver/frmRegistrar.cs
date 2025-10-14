@@ -15,18 +15,11 @@ namespace pryVargasSP3EjercicioPorResolver
         string Descripcion = "";
         float Precio = 0;
 
-        //Declaración Struct
-        public struct datoRepuesto
-        {
-            public string marca;
-            public string origen;
-            public int numero;
-            public string descripcion;
-            public float precio;
-        }
+       
 
-        //Declaración array principal
-        public static datoRepuesto[] vecRepuesto = new datoRepuesto[100];
+        //Declaración matriz principal
+        
+        public static string [,] vecRepuestosdatos = new string[100,5];
 
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -41,7 +34,7 @@ namespace pryVargasSP3EjercicioPorResolver
             //Grabamos datos en los array
 
             //Validamos que el array no este lleno
-            if (indice >= vecRepuesto.Length)
+            if (indice >= vecRepuestosdatos.GetLength(0))
             {
                 MessageBox.Show("El array se encuentra lleno, no se puede grabar más datos.", "Array lleno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnIngresar.Enabled = false; //Deshabilitamos el btnIngresar para no agregar ningún dato nuevo
@@ -54,7 +47,7 @@ namespace pryVargasSP3EjercicioPorResolver
 
             while (i < indice && existe == false)   // recorre solo hasta la cantidad cargada y mientras existe sea falso
             {
-                if (vecRepuesto[i].numero == Numero)
+                if (vecRepuestosdatos[i,2] == Convert.ToString(Numero))
                 {
                     existe = true;
                 }
@@ -68,11 +61,11 @@ namespace pryVargasSP3EjercicioPorResolver
             else
             {
                 //Grabamos los datos
-                vecRepuesto[indice].marca = Marca;
-                vecRepuesto[indice].origen = Origen;
-                vecRepuesto[indice].numero = Numero;
-                vecRepuesto[indice].descripcion = Descripcion;
-                vecRepuesto[indice].precio = Precio;
+                vecRepuestosdatos[indice,0] = Marca;
+                vecRepuestosdatos[indice,1] = Origen;
+                vecRepuestosdatos[indice,2]= Convert.ToString(Numero);
+                vecRepuestosdatos[indice,3]= Descripcion;
+                vecRepuestosdatos[indice,4] = Convert.ToString(Precio);
 
                 indice++;
             }

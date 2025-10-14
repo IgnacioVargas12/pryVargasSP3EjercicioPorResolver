@@ -83,11 +83,11 @@ namespace pryVargasSP3EjercicioPorResolver
             while (Indice < frmRegistrar.indice) //Recorremos el vector hasta donde se esté lleno
             {
                 //Verificamos que coincidan tanto marca como origen
-                if (frmRegistrar.vecRepuesto[Indice].marca == MarcaSeleccionada && frmRegistrar.vecRepuesto[Indice].origen == OrigenSeleccionado)
+                if (frmRegistrar.vecRepuestosdatos[Indice,0]== MarcaSeleccionada && frmRegistrar.vecRepuestosdatos[Indice,1]== OrigenSeleccionado)
                 {
-                    Resultado += "Número: " + frmRegistrar.vecRepuesto[Indice].numero + Environment.NewLine;
-                    Resultado += "Descripción: " + frmRegistrar.vecRepuesto[Indice].descripcion + Environment.NewLine;
-                    Resultado += "Precio: $" + frmRegistrar.vecRepuesto[Indice].precio + Environment.NewLine;
+                    Resultado += "Número: " + frmRegistrar.vecRepuestosdatos[Indice,2]+ Environment.NewLine;
+                    Resultado += "Descripción: " + frmRegistrar.vecRepuestosdatos[Indice,3]+ Environment.NewLine;
+                    Resultado += "Precio: $" + frmRegistrar.vecRepuestosdatos[Indice,4]+ Environment.NewLine;
                     Resultado += "---------------------------" + Environment.NewLine;
 
                 }
